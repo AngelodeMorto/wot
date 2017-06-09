@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <h1>Content</h1>
+    <h2>Content</h2>
     {{--<h2>more content</h2>--}}
     <div class="panel-group row">
 

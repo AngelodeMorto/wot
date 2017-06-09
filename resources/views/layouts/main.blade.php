@@ -36,33 +36,27 @@
                         <li><a href="/admin">Adminka</a></li>
                     @endif
 
-                    <li class="@if(\Illuminate\Support\Facades\Request::is('analiz*')) active @endif"><a href="#" onclick="event.preventDefault(); document.getElementById('WGauth-form').submit();"> WG auth </a></li>
+                    <li class="@if(\Illuminate\Support\Facades\Request::is('analiz*')) active @endif"><a href="#" onclick="event.preventDefault(); document.getElementById('WGauth-form').submit();"><i class="fa fa-eye" aria-hidden="true"></i> WG авторизация </a></li>
                     <form style="display: none" id="WGauth-form" class="form-horizontal" action="https://api.worldoftanks.ru/wot/auth/login/?application_id=df13c5fa140af811b023333b08201ab5&redirect_uri={{ config('app.url', 'localhost') }}/analiz" method="post" name="form1">
 
                     </form>
-                    <li class=""><a href="#">menu1</a></li>
-                    <li><a href="#">menu2</a></li>
-                    <li><a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-cog fa-spin"></i>
-                            {{--<span class="sr-only">Loading...</span>--}}</a>
-                    </li>
 
                     {{-- АВТОРИЗАЦИЯ --}}
 
                     @if (Auth::guest())
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
+                        <li><a href="{{ route('login') }}"><i class="fa fa-user" aria-hidden="true"></i> Login</a></li>
+                        <li><a href="{{ route('register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                <i class="fa fa-address-card" aria-hidden="true"></i> {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Logout
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -88,18 +82,12 @@
 
 
         <div class="col-lg-3 col-sm-3">
-
+            <h2>Last</h2>
             @section('sidebar')
                 <div class="sidebar-block">
-                    <h2 class="flex-center">Last</h2>
-                    <p>name: text</p>
-                    <p>name: text</p>
-                </div>
-                <div class="sidebar-block">
-                    <h2 class="flex-center">More</h2>
-                    <p>name: text</p>
-                    <p>name: text</p>
-                    <p>name: text</p>
+                    <h2 class="flex-center">Last title</h2>
+                    <p>text</p>
+                    <p>text</p>
                 </div>
             @show
 

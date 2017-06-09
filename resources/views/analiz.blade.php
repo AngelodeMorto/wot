@@ -7,16 +7,16 @@
 
         <thead>
             <tr>
-                <th rowspan="2">Name</th>
-                <th rowspan="2">Btls</th>
-                <th rowspan="2">dmg</th>
-                <th rowspan="2">Frg</th>
-                <th rowspan="2">Wn8</th>
-                <th colspan="2">exp</th>
+                <th rowspan="2"><p class="flex-center">Name</p></th>
+                <th rowspan="2"><p class="flex-center">Бои</p></th>
+                <th rowspan="2"><p class="flex-center">Урон</p></th>
+                <th rowspan="2"><p class="flex-center">Фраги</p></th>
+                <th rowspan="2"><p class="flex-center">Wn8</p></th>
+                <th colspan="2"><p class="flex-center">Значения по серверу</p></th>
             </tr>
             <tr>
-                <th>e_dm</th>
-                <th>e_fr</th>
+                <th><p class="flex-center">Средний урон</p></th>
+                <th><p class="flex-center">Средние фраги</p></th>
             </tr>
         </thead>
 
