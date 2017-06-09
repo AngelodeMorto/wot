@@ -61,7 +61,7 @@ class SiteController extends Controller
             $tanks[] = $array;
         }
 
-        return view('analiz', compact('tanks'));
+        return view('analiz', compact('tanks', 'WN8_all'));
     }
 
     public function refresh(){

@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <h3>Total WN8: {{ $WN8_all }}</h3>
+
     <table id="statistic" class="table table-bordered table-hover">
 
         <thead>
