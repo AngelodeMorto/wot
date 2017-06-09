@@ -32,11 +32,15 @@
 
                 @section('menu')
 
-                    <li><a href="#" onclick="event.preventDefault(); document.getElementById('WGauth-form').submit();"> WG auth </a></li>
+                    @if(Auth::user() && Auth::user()->role == "admin")
+                        <li><a href="/admin">Adminka</a></li>
+                    @endif
+
+                    <li class="@if(\Illuminate\Support\Facades\Request::is('analiz*')) active @endif"><a href="#" onclick="event.preventDefault(); document.getElementById('WGauth-form').submit();"> WG auth </a></li>
                     <form style="display: none" id="WGauth-form" class="form-horizontal" action="https://api.worldoftanks.ru/wot/auth/login/?application_id=df13c5fa140af811b023333b08201ab5&redirect_uri={{ config('app.url', 'localhost') }}/analiz" method="post" name="form1">
 
                     </form>
-                    <li class="active"><a href="#">menu1</a></li>
+                    <li class=""><a href="#">menu1</a></li>
                     <li><a href="#">menu2</a></li>
                     <li><a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a></li>
                     <li><a href="#"><i class="fa fa-cog fa-spin"></i>
@@ -90,7 +94,6 @@
                     <h2 class="flex-center">Last</h2>
                     <p>name: text</p>
                     <p>name: text</p>
-                    <p><a href="/admin">Adminka</a></p>
                 </div>
                 <div class="sidebar-block">
                     <h2 class="flex-center">More</h2>

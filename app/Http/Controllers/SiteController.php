@@ -25,6 +25,7 @@ class SiteController extends Controller
         $user_tanks_stats = $this->parse_curl('https://api.worldoftanks.ru/wot/tanks/stats/?application_id=df13c5fa140af811b023333b08201ab5&amp;account_id='.$request->account_id.'&fields=-clan,-stronghold_skirmish,-regular_team,-company,-stronghold_defense,-team,-globalmap');
         $user_tanks_stats = $user_tanks_stats['data'][$request->account_id];
 
+
 //        $exp_tank_values = Expected_tank_values::all();
 
 
@@ -73,7 +74,7 @@ class SiteController extends Controller
         }
 
 
-        $etw = $this->parse_curl('http://www.wnefficiency.net/exp/expected_tank_values_29.json');
+        $etw = $this->parse_curl('http://www.wnefficiency.net/exp/expected_tank_values_30.json');
         $name_t = $this->parse_curl('https://api.worldoftanks.ru/wot/encyclopedia/vehicles/?application_id=df13c5fa140af811b023333b08201ab5&fields=name,tank_id');
         $name_t = $name_t['data'];
 
