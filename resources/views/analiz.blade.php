@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <h2>WN8 акаунта: {{ $WN8_all }}</h2>
+    <h2>WN8 аккаунта: {{ $WN8_all }}</h2>
 
     <table id="statistic" class="table table-bordered table-hover">
 
