@@ -82,13 +82,16 @@
 
 
         <div class="col-lg-3 col-sm-3">
-            <h2>Last</h2>
             @section('sidebar')
-                <div class="sidebar-block">
-                    <h2 class="flex-center">Last title</h2>
-                    <p>text</p>
-                    <p>text</p>
-                </div>
+                <h2>Last</h2>
+
+                @foreach($last_articles as $article)
+                    <div class="sidebar-block">
+                        <h2 class="flex-center">{{ $article->title }}</h2>
+                        <p><img src="img/{{ $article->image }}" class="img-thumbnail"></p>
+                        <p>{!! $article->description !!}</p>
+                    </div>
+                @endforeach
             @show
 
         </div>
