@@ -16,6 +16,7 @@
     @show
 </head>
 <body>
+<div id="p_prldr"><div class="contpre"><span class="svg_anm"></span><br><small>Загрузка</small></div></div>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -111,5 +112,12 @@
 @section('includes_js')
     <script src="{{asset('js/jquery-3.2.0.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.js')}}"></script>
+    <script type="text/javascript">$(window).on('load', function () {
+            var $preloader = $('#p_prldr'),
+                $svg_anm   = $preloader.find('.svg_anm');
+            $svg_anm.fadeOut();
+            $preloader.delay(1000).fadeOut('slow');
+        });
+    </script>
 @show
 </html>
