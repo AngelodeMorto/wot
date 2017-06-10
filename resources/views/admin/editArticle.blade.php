@@ -48,7 +48,7 @@
     <div class="form-group">
         {!! Form::label('old_image', 'Image:', ['class'=>'col-xs-2 control-label']) !!}
         <div class="col-xs-offset-2 col-xs-10">
-            {!! Html::image('img/'.$article->image, '', ['class'=>'img-circle old-article-image'])!!}
+            {!! Html::image('img/articles/'.$article->image, '', ['class'=>'img-circle old-article-image'])!!}
             {!! Form::hidden('old_image', $article->image) !!}
         </div>
     </div>

@@ -60,7 +60,7 @@ class ArticleController extends Controller
                 if($request->hasFile('image')){
                     $file = $request->file('image');
                     $file->move(public_path().'/img/articles/',$file->getClientOriginalName());
-                    $input['image'] = '/articles/'.$file->getClientOriginalName();
+                    $input['image'] = $file->getClientOriginalName();
                 }
                 else{
                     $input['image'] = $input['old_image'];
