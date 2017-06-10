@@ -12,7 +12,7 @@ class SiteController extends Controller
 
     public function index(){
 
-        $articles = Article::all();
+        $articles = Article::orderBy("created_at", "desc")->get();
 
         return view('welcome', compact('articles'));
     }
@@ -145,5 +145,10 @@ class SiteController extends Controller
         curl_close($curl);
 
         return $result;
+    }
+
+    public function article(Article $article){
+
+        return view('article', compact('article'));
     }
 }
