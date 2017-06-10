@@ -88,7 +88,7 @@
                 @foreach($last_articles as $article)
                     <div class="sidebar-block">
                         <h2 class="flex-center">{{ $article->title }}</h2>
-                        <p><img src="img/{{ $article->image }}" class="img-thumbnail"></p>
+                        <p><img src="/img/{{ $article->image }}" class="img-thumbnail"></p>
                         <p><a href="{{ route('article', $article->id) }}">{!! $article->description !!}</a></p>
                     </div>
                 @endforeach
