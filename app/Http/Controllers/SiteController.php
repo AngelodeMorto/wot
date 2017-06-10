@@ -146,4 +146,9 @@ class SiteController extends Controller
 
         return $result;
     }
+
+    public function article(Article $article){
+
+        return view('article', compact('article'));
+    }
 }
