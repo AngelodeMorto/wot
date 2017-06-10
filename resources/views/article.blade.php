@@ -3,7 +3,7 @@
 @section('content')
     <div class="titles_main">
         <div class="col-md-12">
-            <div class="thumbnail">
+            <div class="thumbnail article_main">
                 <img src="/img/articles/{{ $article->image }}">
                 <div class="caption">
                     <h1 class="flex-center article-name">{{ $article->title }}</h1>
