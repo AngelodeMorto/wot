@@ -38,7 +38,7 @@
                     @endif
 
                     <li class="@if(\Illuminate\Support\Facades\Request::is('analiz*')) active @endif"><a href="#" onclick="event.preventDefault(); document.getElementById('WGauth-form').submit();"><i class="fa fa-eye" aria-hidden="true"></i> WG авторизация </a></li>
-                    <form style="display: none" id="WGauth-form" class="form-horizontal" action="https://api.worldoftanks.ru/wot/auth/login/?application_id=df13c5fa140af811b023333b08201ab5&redirect_uri={{ config('app.url', 'localhost') }}/analiz" method="post" name="form1">
+                    <form style="display: none" id="WGauth-form" class="form-horizontal" action="https://api.worldoftanks.ru/wot/auth/login/?application_id=df13c5fa140af811b023333b08201ab5&redirect_uri={{ config('app.url', 'localhost') }}/WGAuth" method="post" name="form1">
 
                     </form>
 

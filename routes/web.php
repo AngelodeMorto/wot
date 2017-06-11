@@ -15,6 +15,10 @@ Route::get('/', ['uses' => 'SiteController@index', 'as' => 'home']);
 Route::get('/article/{article}', ['uses' => 'SiteController@article', 'as' => 'article']);
 Route::get('/analiz', ['uses' => 'SiteController@analiz', 'as' => 'analiz']);
 
+Route::get('/WGAuth', ['uses' => 'WGAuthController@auth', 'as' => 'WGAuth']);
+Route::get('/add-account', ['uses' => 'WGAuthController@addAccount', 'as' => 'addAccount']);
+Route::get('/change-nick', ['uses' => 'WGAuthController@changeNickname', 'as' => 'changeNickname']);
+
 
 Route::get('/refresh', ['uses' => 'SiteController@refresh', 'as' => 'refresh']);
 Route::match(['get', 'post'], '/change_similar', ['uses' => 'SiteController@change_similar', 'as' => 'change_similar']);
