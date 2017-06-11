@@ -56,7 +56,40 @@ class WGAuthController extends Controller
     }
 
     public function addAccount(Request $request){
+        $application_id = "df13c5fa140af811b023333b08201ab5";
 
+        Validator::extend('expires_at_check', function($attribute, $value, $validator) {
+            return $value > time();
+        });
+
+        $validator = Validator::make($request->all(), [
+            'status' => 'required',
+            'access_token' => 'required',
+            'nickname' => 'required',
+            'account_id' => 'required',
+            'expires_at' => 'required|expires_at_check',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back();
+        }
+
+        $check = $this->parse_curl('https://api.worldoftanks.ru/wot/account/info/?application_id=' . $application_id . '&amp;account_id='.$request->account_id. "&amp;access_token=".$request->access_token);
+
+        if($check['status'] == "ok") {
+            $user = Auth::user();
+
+            if (!$user->account_id) {
+            $user->account_id =  $request->account_id;
+            $user->nickname = $request->nickname;
+            $user->save();
+            }
+
+            return redirect('home');
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
     public function changeNickname(){
