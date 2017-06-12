@@ -13,17 +13,23 @@
 
 Route::get('/', ['uses' => 'SiteController@index', 'as' => 'home']);
 Route::get('/article/{article}', ['uses' => 'SiteController@article', 'as' => 'article']);
-Route::get('/analiz', ['uses' => 'SiteController@analiz', 'as' => 'analiz']);
+Route::get('/analiz', ['uses' => 'SiteController@analiz', 'as' => 'analiz', 'middleware' => ['auth', 'WGAuth']]);
 
+Route::get('/WGAuth', ['uses' => 'WGAuthController@auth', 'as' => 'WGAuth', 'middleware' => 'guest']);
+Route::get('/add-account', ['uses' => 'WGAuthController@addAccount', 'as' => 'addAccount', 'middleware' => 'auth']);
 
-Route::get('/refresh', ['uses' => 'SiteController@refresh', 'as' => 'refresh']);
-Route::match(['get', 'post'], '/change_similar', ['uses' => 'SiteController@change_similar', 'as' => 'change_similar']);
+Route::post('/change-nick', ['uses' => 'WGAuthController@changeNickname', 'as' => 'changeNickname', 'middleware' => ['auth', 'WGAuth']]);
+Route::post('/set-pass', ['uses' => 'WGAuthController@setPassword', 'as' => 'setPassword', 'middleware' => ['auth', 'WGAuth']]);
+
 
 Route::group(['middleware' => ['auth', 'checkRole'], 'prefix' => 'admin'], function (){
 
     Route::get('/', function () {
         return view('layouts.admin');
     });
+
+    Route::get('/refresh', ['uses' => 'SiteController@refresh', 'as' => 'refresh']);
+    Route::match(['get', 'post'], '/change_similar', ['uses' => 'SiteController@change_similar', 'as' => 'change_similar']);
 
     Route::group(['prefix' => 'articles'], function (){
         Route::get('/', ['uses' => 'Admin\ArticleController@index', 'as' => 'Articles']);

@@ -6,6 +6,7 @@ use App\Article;
 use App\Expected_tank_values;
 use App\Tank;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
@@ -17,16 +18,15 @@ class SiteController extends Controller
         return view('welcome', compact('articles'));
     }
 
-    public function analiz(Request $request){
-//        dd($request->all());
-        $user_account_info = $this->parse_curl('https://api.worldoftanks.ru/wot/account/info/?application_id=df13c5fa140af811b023333b08201ab5&amp;account_id='.$request->account_id);
-        $user_random_stat = $user_account_info['data'][$request->account_id]['statistics']['all'];
+    public function analiz(){
+        $account_id = Auth::user()->account_id;
 
-        $user_tanks_stats = $this->parse_curl('https://api.worldoftanks.ru/wot/tanks/stats/?application_id=df13c5fa140af811b023333b08201ab5&amp;account_id='.$request->account_id.'&fields=-clan,-stronghold_skirmish,-regular_team,-company,-stronghold_defense,-team,-globalmap');
-        $user_tanks_stats = $user_tanks_stats['data'][$request->account_id];
+        $user_account_info = $this->parse_curl('https://api.worldoftanks.ru/wot/account/info/?application_id=df13c5fa140af811b023333b08201ab5&amp;account_id='.$account_id);
 
+        $user_random_stat = $user_account_info['data'][$account_id]['statistics']['all'];
 
-//        $exp_tank_values = Expected_tank_values::all();
+        $user_tanks_stats = $this->parse_curl('https://api.worldoftanks.ru/wot/tanks/stats/?application_id=df13c5fa140af811b023333b08201ab5&amp;account_id='.$account_id.'&fields=-clan,-stronghold_skirmish,-regular_team,-company,-stronghold_defense,-team,-globalmap');
+        $user_tanks_stats = $user_tanks_stats['data'][$account_id];
 
 
         $WN8_all = 0;
