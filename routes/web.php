@@ -42,4 +42,4 @@ Route::group(['middleware' => ['auth', 'checkRole'], 'prefix' => 'admin'], funct
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'cabinet']);
