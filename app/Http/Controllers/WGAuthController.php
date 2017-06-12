@@ -56,6 +56,11 @@ class WGAuthController extends Controller
     }
 
     public function addAccount(Request $request){
+
+        if(Auth::user()->account_id){
+            return redirect()->back();
+        }
+
         $application_id = "df13c5fa140af811b023333b08201ab5";
 
         Validator::extend('expires_at_check', function($attribute, $value, $validator) {
@@ -85,15 +90,51 @@ class WGAuthController extends Controller
             $user->save();
             }
 
-            return redirect('home');
+            return redirect()->route('home');
         }
         else{
             return redirect()->back();
         }
     }
 
-    public function changeNickname(){
+    public function changeNickname(Request $request){
 
+        if(!preg_match("~^guest\d+~", Auth::user()->name)){
+            return redirect()->back();
+        }
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|alpha_dash',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back();
+        }
+
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->save();
+        return redirect()->route('home');
+    }
+
+    public function setPassword(Request $request){
+
+        if(Auth::user()->password){
+            return redirect()->back();
+        }
+
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|min:6',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back();
+        }
+
+        $user = Auth::user();
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return redirect()->route('home');
     }
 
     public function parse_curl ($link){
