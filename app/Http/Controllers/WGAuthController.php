@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class WGAuthController extends Controller
 {
@@ -39,11 +40,17 @@ class WGAuthController extends Controller
                 else
                     $lastId = 0;
 
+                $random_pass = Str::random(10);
+
                 $user = User::create([
                     'name' => 'guest' . $lastId,
                     'account_id' => $request->account_id,
                     'nickname' => $request->nickname,
+                    'password' => bcrypt($random_pass),
                 ]);
+
+                Auth::login($user, true);
+                return redirect('/home')->with('random_pass', $random_pass);
             }
 
             Auth::login($user, true);
@@ -118,10 +125,6 @@ class WGAuthController extends Controller
     }
 
     public function setPassword(Request $request){
-
-        if(Auth::user()->password){
-            return redirect()->back();
-        }
 
         $validator = Validator::make($request->all(), [
             'password' => 'required|min:6',

@@ -15,7 +15,7 @@ Route::get('/', ['uses' => 'SiteController@index', 'as' => 'home']);
 Route::get('/article/{article}', ['uses' => 'SiteController@article', 'as' => 'article']);
 Route::get('/analiz', ['uses' => 'SiteController@analiz', 'as' => 'analiz', 'middleware' => ['auth', 'WGAuth']]);
 
-Route::get('/WGAuth', ['uses' => 'WGAuthController@auth', 'as' => 'WGAuth']);
+Route::get('/WGAuth', ['uses' => 'WGAuthController@auth', 'as' => 'WGAuth', 'middleware' => 'guest']);
 Route::get('/add-account', ['uses' => 'WGAuthController@addAccount', 'as' => 'addAccount', 'middleware' => 'auth']);
 
 Route::post('/change-nick', ['uses' => 'WGAuthController@changeNickname', 'as' => 'changeNickname', 'middleware' => ['auth', 'WGAuth']]);
