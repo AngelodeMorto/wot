@@ -13,7 +13,7 @@
 
 Route::get('/', ['uses' => 'SiteController@index', 'as' => 'home']);
 Route::get('/article/{article}', ['uses' => 'SiteController@article', 'as' => 'article']);
-Route::get('/analiz', ['uses' => 'SiteController@analiz', 'as' => 'analiz']);
+Route::get('/analiz', ['uses' => 'SiteController@analiz', 'as' => 'analiz', 'middleware' => ['auth', 'WGAuth']]);
 
 Route::get('/WGAuth', ['uses' => 'WGAuthController@auth', 'as' => 'WGAuth']);
 Route::get('/add-account', ['uses' => 'WGAuthController@addAccount', 'as' => 'addAccount', 'middleware' => 'auth']);
