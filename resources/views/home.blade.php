@@ -3,10 +3,10 @@
 @section('content')
     <h2>Кабинет</h2>
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Информация по аккаунту</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    Добро пожаловать, <b>{{Auth::user()->name}}</b>!!
                     <br>
 
                     @if(!Auth::user()->account_id)

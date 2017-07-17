@@ -89,7 +89,7 @@
 
         <div class="col-lg-3 col-sm-3">
             @section('sidebar')
-                <h2>Last</h2>
+                <h2>Последние статьи</h2>
 
                 @foreach($last_articles as $article)
                     <div class="sidebar-block">
